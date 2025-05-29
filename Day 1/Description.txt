@@ -1,0 +1,134 @@
+Sure, Ramesh! Let’s go through the code step-by-step with a detailed explanation so you fully understand how it reverses a singly linked list.
+
+⸻
+
+✅ Original Function:
+
+class Solution {
+public:
+    ListNode* reverseList(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+
+        while (curr != nullptr) {
+            ListNode* nextTemp = curr->next; // 1. Save next
+            curr->next = prev;               // 2. Reverse link
+            prev = curr;                     // 3. Move prev ahead
+            curr = nextTemp;                 // 4. Move curr ahead
+        }
+
+        return prev; // New head of the reversed list
+    }
+};
+
+
+
+⸻
+
+💡 Let’s Understand Every Line:
+
+🔹 Step 1: Initialize Pointers
+
+ListNode* prev = nullptr;
+ListNode* curr = head;
+
+	•	prev will eventually become the new head of the reversed list.
+	•	curr starts at the original head and traverses the list.
+
+⸻
+
+🔄 Step 2: Loop Through the List
+
+while (curr != nullptr) {
+
+	•	This loop continues until curr reaches the end of the original list.
+
+⸻
+
+🔁 Inside the Loop: Four Steps
+
+🧱 Step 1: Save the Next Node
+
+ListNode* nextTemp = curr->next;
+
+	•	We save the next node because we’re going to break curr->next.
+	•	Without this, we would lose access to the rest of the list.
+
+⸻
+
+🔗 Step 2: Reverse the Link
+
+curr->next = prev;
+
+	•	The current node’s next pointer is reversed to point back to prev.
+
+⸻
+
+🚶 Step 3: Move prev Forward
+
+prev = curr;
+
+	•	Move prev to curr. This prepares for the next reversal.
+
+⸻
+
+🚶 Step 4: Move curr Forward
+
+curr = nextTemp;
+
+	•	Move curr forward to the original curr->next, which we saved in nextTemp.
+
+⸻
+
+🔚 After the Loop:
+
+return prev;
+
+	•	Once curr becomes nullptr (end of list), prev will be pointing to the new head of the reversed list.
+
+⸻
+
+📊 Dry Run Example:
+
+Let’s say the list is:
+1 → 2 → 3 → 4 → nullptr
+
+Initial:
+
+prev = nullptr
+curr = 1
+
+First Iteration:
+	•	nextTemp = 2
+	•	1->next = nullptr
+	•	prev = 1
+	•	curr = 2
+
+Now list looks like:
+1 → nullptr, curr = 2
+
+Second Iteration:
+	•	nextTemp = 3
+	•	2->next = 1
+	•	prev = 2
+	•	curr = 3
+
+Now list looks like:
+2 → 1 → nullptr, curr = 3
+
+Repeat this, and finally:
+
+After Fourth Iteration:
+	•	prev = 4
+	•	curr = nullptr
+
+Reversed list is:
+4 → 3 → 2 → 1 → nullptr
+
+⸻
+
+✅ Time & Space Complexity:
+
+Metric	Value
+Time	O(n)
+Space	O(1) (in-place)

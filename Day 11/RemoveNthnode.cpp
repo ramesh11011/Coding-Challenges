@@ -74,9 +74,7 @@ int main() {
     printList(head);
 
     head = sol.removeNthFromEnd(head, n);
-
     cout << "After removing " << n << "th node from end: ";
     printList(head);
-
     return 0;
 }

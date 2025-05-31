@@ -1,3 +1,5 @@
+// Greatest common division
+
 #include <iostream>
 #include <vector>
 using namespace std;
